@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="200dp"
+    android:layout_height="wrap_content"
+    android:background="@color/color_background"
+    android:padding="10dp">
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="200dp"
+        android:layout_width="match_parent"
+
+        >
+
+        <ImageView
+            android:id="@+id/ivBestMovie"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/movietester3"
+            android:scaleType="centerCrop"
+            >
+        </ImageView>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tvBestMovieName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Movie Name"
+        style="@style/whiteTextColor">
+    </TextView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="8.20"
+            style="@style/whiteTextColor"
+            />
+       <include layout="@layout/star_rating"></include>
+    </LinearLayout>
+
+
+</LinearLayout>

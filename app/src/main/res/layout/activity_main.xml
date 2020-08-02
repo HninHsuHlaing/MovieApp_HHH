@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.MainActivity"
+    android:orientation="vertical"
+    android:background="#151B25"
+    >
+
+
+<!--    <androidx.core.widget.NestedScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/lyappBar"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/appBarColor"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivNavigationicon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    app:srcCompat="@drawable/ic_format_align_left_black_24dp"
+                    tools:ignore="VectorDrawableCompat"
+                    android:layout_weight="1"
+                    >
+
+                </androidx.appcompat.widget.AppCompatImageView>
+
+                <TextView
+                    android:id="@+id/tvDiscover"
+                    style="@style/whiteTextColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="100dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toRightOf="@+id/ivNavigationicon"
+                    android:text="Discover"
+                    android:layout_weight="1"
+                    android:textSize="20dp">
+
+                </TextView>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="60dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="100dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toRightOf="@+id/tvDiscover"
+                    android:src="@drawable/ic_search_black_24dp">
+
+                </androidx.appcompat.widget.AppCompatImageView>
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lyappBar"
+                >
+
+                <ViewFlipper
+                    android:id="@+id/viewflipper"
+                    android:layout_width="match_parent"
+                    android:layout_height="190dp"
+                    android:layout_centerHorizontal="true"
+                    >
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/movietester7"
+                            android:scaleType="centerCrop"
+                            >
+
+
+                        </ImageView>
+                        <ImageView
+                            android:id="@+id/btnPlayTester"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_play_circle_filled_yellow_24dp"
+                            android:layout_gravity="center">
+
+                        </ImageView>
+                    </FrameLayout>
+
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/movietester2"
+                        android:scaleType="centerCrop"
+                        >
+
+                    </ImageView>
+
+
+
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/movietester8"
+                        android:scaleType="centerCrop"
+                        >
+
+                    </ImageView>
+
+
+                </ViewFlipper>
+            </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BEST POPULAR FILM AND SERIES"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/colorGray"
+                android:layout_marginLeft="8dp"
+                >
+
+            </TextView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcBestMovie"
+                android:layout_width="match_parent"
+                android:layout_height="280dp"
+                tools:listitem="@layout/best_movie_item"
+                />
+            <RelativeLayout
+                android:layout_width="560dp"
+                android:layout_height="100dp"
+                android:layout_margin="8dp"
+                android:background="#232E40"
+                >
+            <TextView
+                android:id="@+id/tvcheckmovieshowtime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Check Movie \nShowtimes"
+                style="@style/whiteTextColor"
+                android:textSize="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+               />
+                <TextView
+                    android:id="@+id/tvSeeMore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SEE MORE"
+                    android:textColor="#EFB418"
+                    android:textSize="10dp"
+                    android:layout_below="@+id/tvcheckmovieshowtime"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    />
+                <ImageView
+                    android:id="@+id/igLocation"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/ic_location_on_black_24dp"
+                    android:layout_toRightOf="@+id/tvcheckmovieshowtime"
+                    android:layout_marginLeft="180dp"
+                    android:layout_marginTop="10dp"
+                    />
+
+            </RelativeLayout>
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:background="#151C24"
+                android:minHeight="?attr/actionBarSize"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tabGravity="fill"
+                app:tabMode="scrollable"
+                app:tabSelectedTextColor="@color/colorAccent"
+                app:tabTextColor="#ffffff"
+                />
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/pager"
+                android:layout_width="match_parent"
+                android:layout_height="180dp">
+
+            </androidx.viewpager.widget.ViewPager>
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:id="@+id/rcPagerList"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="280dp"-->
+<!--                tools:listitem="@layout/best_movie_item"-->
+
+<!--                >-->
+
+<!--            </androidx.recyclerview.widget.RecyclerView>-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="#1E2634">
+                <TextView
+                    android:id="@+id/tvshowCase"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SHOWCASES"
+                    android:layout_marginLeft="8dp"
+                    android:textColor="@color/colorGray"
+                    android:layout_marginTop="5dp"
+
+                    />
+                <TextView
+                    android:id="@+id/tvMoreShowCase"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MORE SHOWCASES"
+                    style="@style/whiteTextColor"
+                    android:layout_toRightOf="@+id/tvshowCase"
+                    android:layout_marginLeft="160dp"
+                    android:layout_marginTop="5dp"
+                    />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcShowCase"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_below="@+id/tvMoreShowCase"
+                    tools:listitem="@layout/show_case_item"
+                    ></androidx.recyclerview.widget.RecyclerView>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tvbestactor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BEST ACTORS"
+                    android:textColor="@color/colorGray"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="10dp"
+                    />
+                <TextView
+                    android:id="@+id/tvMoreActors"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MORE ACTORS"
+                    android:layout_toRightOf="@+id/tvbestactor"
+                    style="@style/whiteTextColor"
+                    android:layout_marginLeft="180dp"
+                    android:layout_marginTop="10dp"
+                    />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcActorList"
+                    android:layout_width="match_parent"
+                    android:layout_height="280dp"
+                    android:layout_below="@+id/tvbestactor"
+                    android:layout_marginTop="5dp"
+                    tools:listitem="@layout/best_actor_item"
+                    />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+
+
+
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

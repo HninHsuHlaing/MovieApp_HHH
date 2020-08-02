@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MovieApp_HHH</string>
+
+    <string name="hyperlink">SEE MORE\n<a href="https://google.com">Google.com</a></string>
+    <string name="storyline">Seventy years before Harry Potter reading a book \nby Newt Scamander, author experiencing \nextraordinary adventures in the mysterious, the New \nYork Association of witches.</string>
+    <string name="original_flim_title">Fantastic Beasts and Where to Find \nThem</string>
+
+</resources>
