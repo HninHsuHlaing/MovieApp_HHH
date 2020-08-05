@@ -64,6 +64,8 @@ class ActionFragment : Fragment(),MovieView {
         }
         setUpPresenter()
          mPresenter.onDiscoverUiReady(this,movie_id.toString())
+
+
        // movie_id?.let { mPresenter.onDiscoverReady(it) }
 
         return  view

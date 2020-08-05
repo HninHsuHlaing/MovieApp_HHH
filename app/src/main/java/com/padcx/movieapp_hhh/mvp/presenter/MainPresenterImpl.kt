@@ -54,6 +54,7 @@ class MainPresenterImpl : AbstractBasePresenter<MainView>(), MainPresenter {
 
     override fun onTapShowCaseItem(movie_id: Int) {
         mView?.navigateToactorDetail(movie_id)
+
     }
 
 //    override fun onTapPopularMovieItem(entity : MovieDetailsVO) {

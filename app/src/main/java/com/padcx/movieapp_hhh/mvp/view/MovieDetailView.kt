@@ -1,10 +1,10 @@
 package com.padcx.movieapp_hhh.mvp.view
 
-import com.padcx.movieapp_hhh.data.vos.ActorVO
-import com.padcx.movieapp_hhh.data.vos.MovieDetailsVO
+import com.padcx.movieapp_hhh.data.vos.*
 
 interface MovieDetailView : BaseView{
-    fun displayActorListDetail(list: List<ActorVO>)
-    fun displayCreatorList(list: List<ActorVO>)
+    fun displayActorListDetail(list: List<CastVO>)
+    fun displayCreatorList(list: List<CrewVO>)
     fun displayMovieDetail(moviedetail: MovieDetailsVO)
+    fun displayCastCrewList(list: CastCrewVO)
 }

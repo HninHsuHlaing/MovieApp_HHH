@@ -1,17 +1,19 @@
 package com.padcx.movieapp_hhh.activities
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.widget.ImageView
 import android.widget.ViewFlipper
-import androidx.lifecycle.ViewModelProvider
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import com.padcx.movieapp_hhh.R
-import com.padcx.movieapp_hhh.R.anim.anmi_left_to_right
-import com.padcx.movieapp_hhh.adapters.*
+import com.padcx.movieapp_hhh.adapters.ActorAdapter
+import com.padcx.movieapp_hhh.adapters.DynamicPagerAdapter
+import com.padcx.movieapp_hhh.adapters.PopularfilmAdapter
+import com.padcx.movieapp_hhh.adapters.ShowCaseAdapter
 import com.padcx.movieapp_hhh.data.models.MovieModel
 import com.padcx.movieapp_hhh.data.models.MovieModelImpl
 import com.padcx.movieapp_hhh.data.vos.ActorVO
@@ -22,7 +24,7 @@ import com.padcx.movieapp_hhh.mvp.presenter.MainPresenter
 import com.padcx.movieapp_hhh.mvp.presenter.MainPresenterImpl
 import com.padcx.movieapp_hhh.mvp.view.MainView
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.show_case_item.*
+
 
 class MainActivity : AppCompatActivity(),MainView {
 
@@ -31,7 +33,7 @@ class MainActivity : AppCompatActivity(),MainView {
     private lateinit var mPresenter :MainPresenter
     var tablayout : TabLayout? = null
     var viewPager : ViewPager? = null
-    var viewflipper : ViewFlipper? = null
+   // var viewflipper : ViewFlipper? = null
 
     lateinit var mPopularfilmAdapter: PopularfilmAdapter
     lateinit var mShowCaseAdapter: ShowCaseAdapter
@@ -43,12 +45,18 @@ class MainActivity : AppCompatActivity(),MainView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         mPresenter = MainPresenterImpl()
-            viewflipper = findViewById(R.id.viewflipper)
+           // viewflipper = findViewById(R.id.viewflipper)
 
-        viewflipper?.flipInterval = 3000
-        viewflipper?.isAutoStart = true
+        viewflipper.flipInterval = 3000
+        viewflipper.isAutoStart = true
 
         btnPlayTester.setOnClickListener {
+            startActivity(PlayVideoActivity.newInstant(this))
+        }
+        imgPlayTester.setOnClickListener {
+            startActivity(PlayVideoActivity.newInstant(this))
+        }
+        imgPlayTester1.setOnClickListener {
             startActivity(PlayVideoActivity.newInstant(this))
         }
 //        btnSchowCasePlay.setOnClickListener {

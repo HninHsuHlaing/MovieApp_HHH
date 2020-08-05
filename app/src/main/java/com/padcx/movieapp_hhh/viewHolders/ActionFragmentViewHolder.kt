@@ -3,10 +3,7 @@ package com.padcx.movieapp_hhh.viewHolders
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.padcx.movieapp_hhh.data.vos.ActorVO
-import com.padcx.movieapp_hhh.data.vos.DiscoverVO
-import com.padcx.movieapp_hhh.data.vos.ResultVO
-import com.padcx.movieapp_hhh.data.vos.ShowCaseVO
+import com.padcx.movieapp_hhh.data.vos.*
 //import com.padcx.movieapp_hhh.delegate.PopularMovieDelegate
 import com.padcx.movieapp_hhh.delegate.PopularMovieListDelegate
 import com.padcx.movieapp_hhh.util.img_url_actor
@@ -48,6 +45,14 @@ class ActionFragmentViewHolder(itemView : View, private val mDelegate: PopularMo
             .with(itemView.context)
             .load(imgurl)
             .into(itemView.ivBestMovie)
+    }
+
+    override fun bindCastData(data: CastVO) {
+
+    }
+
+    override fun bindCreatorData(data: CrewVO) {
+
     }
 
 

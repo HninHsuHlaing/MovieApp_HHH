@@ -5,6 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.padcx.movieapp_hhh.data.vos.CastCrewVO
 import com.padcx.movieapp_hhh.data.vos.MovieDetailsVO
 import com.padcx.movieapp_hhh.data.vos.ResultVO
 
@@ -21,4 +22,10 @@ interface PopularMovieDaos {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertMovieDetailData(moviedetail: MovieDetailsVO) : Long
+
+    @Query("select * from castcrew where  sid=:movie_id")
+    fun getAllCastAndCrewList(movie_id: Int): LiveData<CastCrewVO>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertCastCrewData(generic: CastCrewVO) :Long
 }

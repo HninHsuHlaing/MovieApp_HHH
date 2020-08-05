@@ -26,7 +26,7 @@ class DiscoverPresenterImpl : DiscoverPrsenter, AbstractBasePresenter<MovieView>
             onError = {})
             .observe(lifeCycleOwner, Observer {
                 it?.let {
-//                    mView?.displayMovieList(it)
+                   mView?.displayMovieList(it)
                 }
 
             })

@@ -2,10 +2,7 @@ package com.padcx.movieapp_hhh.viewHolders
 
 import android.view.View
 import com.bumptech.glide.Glide
-import com.padcx.movieapp_hhh.data.vos.ActorVO
-import com.padcx.movieapp_hhh.data.vos.DiscoverVO
-import com.padcx.movieapp_hhh.data.vos.ResultVO
-import com.padcx.movieapp_hhh.data.vos.ShowCaseVO
+import com.padcx.movieapp_hhh.data.vos.*
 import com.padcx.movieapp_hhh.util.img_url_actor
 import kotlinx.android.synthetic.main.best_actor_item.view.*
 
@@ -36,6 +33,14 @@ class ActorForDetailPageViewHolder(itemView : View) : AbstractActorForDetailPage
     }
 
     override fun bindDiscoverData(data: DiscoverVO) {
+
+    }
+
+    override fun bindCastData(data: CastVO) {
+
+    }
+
+    override fun bindCreatorData(data: CrewVO) {
 
     }
 

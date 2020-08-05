@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import com.padcx.movieapp_hhh.MovieApi
 import com.padcx.movieapp_hhh.data.vos.*
+import com.padcx.movieapp_hhh.network.responses.GetDiscoverResponse
 import com.padcx.movieapp_hhh.persistent.dbs.*
 import com.padcx.movieapp_hhh.util.PARAM_API_KEY
 import io.reactivex.Observable
@@ -105,12 +106,16 @@ object MovieModelImpl : BaseModel(),MovieModel{
     ) {
         mMovieApi.getDiscoverList(PARAM_API_KEY,genericname)
             .map {
-                it.results?.toList()  }
+                it.results
+                   //     as ((GetDiscoverResponse) -> List<DiscoverVO?>)
+            }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 if (it != null) {
-                    onSuccess(it as List<DiscoverVO>)
+                    onSuccess(it
+                            as List<DiscoverVO>
+                    )
                     mDiscoverDb.DiscoverDaos().insertDiscoverData(it)
                 }
             })
@@ -131,13 +136,59 @@ object MovieModelImpl : BaseModel(),MovieModel{
     ) {
         Log.e("save method=","ff");
         mMovieApi.getMovieDetailById(movieId, PARAM_API_KEY)
-            .map { it?.let { it } }
+            .map {
+                it?.let { it } }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe ({
                 it?.let { it1 -> mPopularMovieDB.PopularMovieDaos().insertMovieDetailData(it1) }
             },{
 
+            })
+    }
+
+    @SuppressLint("CheckResult")
+    override fun getAllCrewAndCastFromApiAndSaveToDatabase(
+        movieId: Int,
+        onSuccess: () -> Unit,
+        onError: (String) -> Unit
+    ) {
+
+        mMovieApi.getMovieDetailByActorsAndCreator(movieId, PARAM_API_KEY)
+            .map{it}
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe ({
+                mPopularMovieDB.PopularMovieDaos().insertCastCrewData(it)
+            },{
+               // onError(it.localizedMessage ?: )
+            })
+    }
+
+    override fun getAllCastAndCrewList(
+        movieId: Int,
+        onError: (String) -> Unit
+    ): LiveData<CastCrewVO> {
+        return mPopularMovieDB.PopularMovieDaos()
+            .getAllCastAndCrewList(movie_id = movieId)
+    }
+
+    @SuppressLint("CheckResult")
+    override fun getVideoIdByMovieId(
+        movieId: Int,
+        onSuccess: (List<VideoVO>) -> Unit,
+        onError: (String) -> Unit
+    ) {
+        mMovieApi.getVideoIdByMovieId(movieId, PARAM_API_KEY)
+            .map { it.results?.toList() ?: listOf() }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe ({
+                it.let {
+                    onSuccess(it as List<VideoVO>)
+                }
+            },{
+              //  onError(it.localizedMessage ?: EM_NO_INTERNET_CONNECTION)
             })
     }
 

@@ -1,5 +1,6 @@
 package com.padcx.movieapp_hhh
 
+import com.padcx.movieapp_hhh.data.vos.CastCrewVO
 import com.padcx.movieapp_hhh.data.vos.MovieDetailsVO
 import com.padcx.movieapp_hhh.network.responses.*
 import com.padcx.movieapp_hhh.util.*
@@ -31,5 +32,16 @@ interface MovieApi {
     fun getDiscoverList(
         @Query("api_key") apiKey: String, @Query("with_genres") with_genres: String): Observable<GetDiscoverResponse>
 
-  //  @GET()
+
+    @GET("movie/{movie_id}/credits")
+    fun getMovieDetailByActorsAndCreator(
+        @Path("movie_id") movie_id: Int,
+        @Query("api_key") apiKey: String
+    ): Observable<CastCrewVO>
+
+    @GET("movie/{movie_id}/videos")
+    fun getVideoIdByMovieId(
+        @Path("movie_id") movie_id: Int,
+        @Query("api_key") apiKey: String
+    ): Observable<GetVideoResponse>
 }

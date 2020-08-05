@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.Light.NoActionBar">
-        <activity android:name=".activities.PlayVideoActivity"></activity>
+        <activity android:name=".activities.ShowCaseVideoPlayActivity"></activity>
+        <activity android:name=".activities.PlayVideoActivity" />
         <activity android:name=".activities.MovieDetail" />
         <activity android:name=".activities.MainActivity">
             <intent-filter>

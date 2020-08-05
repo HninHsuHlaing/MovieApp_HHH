@@ -41,6 +41,7 @@
         android:layout_marginLeft="5dp"
         />
     <TextView
+        android:id="@+id/tvLikeCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="You Like 18 Movie"

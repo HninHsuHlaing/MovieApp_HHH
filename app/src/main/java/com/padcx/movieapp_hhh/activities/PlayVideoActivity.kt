@@ -13,28 +13,16 @@ class PlayVideoActivity : AppCompatActivity() {
 
     companion object{
         fun newInstant(context: Context): Intent {
-            val intent = Intent(context,PlayVideoActivity::class.java)
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=S0Q4gqBUs7c"))
             return intent
         }
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_play_video)
+       // setContentView(R.layout.activity_play_video)
 
-//        val mediaController : MediaController = MediaController(this)
-//        mediaController.setAnchorView(videoView)
-//        val uri: Uri = Uri.parse("https://youtu.be/zClabIdSmhw")
-//        videoView.setMediaController(mediaController)
-//        videoView.setVideoURI(uri)
-//        videoView.start()
-
-//        https://www.youtube.com/watch?v=sUjoDA0fx8s
-        //http://www.ebookfrenzy.com/android_book/movie.mp4
-
-        videoView.setVideoPath("http://www.ebookfrenzy.com/android_book/movie.mp4")
-        videoView.start()
-       // videoView.seekTo(1)
-
+       // var intent  = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=S0Q4gqBUs7c"))
+        this.startActivity(intent)
 
     }
 }

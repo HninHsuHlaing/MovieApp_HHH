@@ -2,10 +2,7 @@ package com.padcx.movieapp_hhh.viewHolders
 
 import android.view.View
 import com.bumptech.glide.Glide
-import com.padcx.movieapp_hhh.data.vos.ActorVO
-import com.padcx.movieapp_hhh.data.vos.DiscoverVO
-import com.padcx.movieapp_hhh.data.vos.ResultVO
-import com.padcx.movieapp_hhh.data.vos.ShowCaseVO
+import com.padcx.movieapp_hhh.data.vos.*
 import com.padcx.movieapp_hhh.delegate.DetailDelegate
 //import com.padcx.movieapp_hhh.delegate.ActorDelegate
 import com.padcx.movieapp_hhh.util.image_url
@@ -43,6 +40,14 @@ class ShowCaseViewHolder(itemView : View,private val mDelegate : DetailDelegate)
     }
 
     override fun bindDiscoverData(data: DiscoverVO) {
+
+    }
+
+    override fun bindCastData(data: CastVO) {
+
+    }
+
+    override fun bindCreatorData(data: CrewVO) {
 
     }
 }

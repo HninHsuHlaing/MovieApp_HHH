@@ -11,11 +11,12 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.padcx.movieapp_hhh.R
 import com.padcx.movieapp_hhh.adapters.ActorForDetailPageAdatpter
+import com.padcx.movieapp_hhh.adapters.CastAdapter
 import com.padcx.movieapp_hhh.adapters.CreatorAdapter
+import com.padcx.movieapp_hhh.adapters.CrewAdapter
 import com.padcx.movieapp_hhh.data.models.MovieModel
 import com.padcx.movieapp_hhh.data.models.MovieModelImpl
-import com.padcx.movieapp_hhh.data.vos.ActorVO
-import com.padcx.movieapp_hhh.data.vos.MovieDetailsVO
+import com.padcx.movieapp_hhh.data.vos.*
 import com.padcx.movieapp_hhh.mvp.presenter.MainPresenter
 import com.padcx.movieapp_hhh.mvp.presenter.MovieDetailPresenter
 import com.padcx.movieapp_hhh.mvp.presenter.MovieDetailPresenterImpl
@@ -40,6 +41,8 @@ class MovieDetail : AppCompatActivity(),  MovieDetailView{
     }
     lateinit var mActorForDetailPageAdatpter: ActorForDetailPageAdatpter
     lateinit var mCreatorAdapter: CreatorAdapter
+    lateinit var  mcastAdapter: CastAdapter
+    lateinit var mCrewAdapter  : CrewAdapter
     private lateinit var mPresenter : MovieDetailPresenter
 
     private  var  mMovieModel : MovieModel = MovieModelImpl
@@ -54,8 +57,8 @@ class MovieDetail : AppCompatActivity(),  MovieDetailView{
         mPresenter = MovieDetailPresenterImpl()
 
         setUpPresenter()
-        mPresenter.onUiReady(this)
-        mPresenter.onCreatorUiReady(this)
+        //mPresenter.onUiReady(this)
+    //    mPresenter.onCreatorUiReady(this)
         val movie_id = intent.getIntExtra(movieid, 0)
 //        mMovieModel.getMovieDetailById(movie_id)
 //            .observe(this, Observer {
@@ -72,27 +75,27 @@ class MovieDetail : AppCompatActivity(),  MovieDetailView{
     }
 
     private fun setUpRecycler() {
-        mActorForDetailPageAdatpter = ActorForDetailPageAdatpter()
+        mcastAdapter = CastAdapter()
         val linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         rcActorListForDetailPage.layoutManager = linearLayoutManager
-        rcActorListForDetailPage.adapter = mActorForDetailPageAdatpter
+        rcActorListForDetailPage.adapter = mcastAdapter
 
-        mCreatorAdapter = CreatorAdapter()
+        mCrewAdapter = CrewAdapter()
         val linearLayoutManager1 = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         rcCreatorList.layoutManager = linearLayoutManager1
-        rcCreatorList.adapter = mCreatorAdapter
+        rcCreatorList.adapter = mCrewAdapter
     }
 
 
 
-    override fun displayActorListDetail(list: List<ActorVO>) {
-        mActorForDetailPageAdatpter.setNewsData(list)
-        rcActorListForDetailPage.adapter = mActorForDetailPageAdatpter
+    override fun displayActorListDetail(list: List<CastVO>) {
+       // mcastAdapter.setNewsData(list)
+      //  rcActorListForDetailPage.adapter = mActorForDetailPageAdatpter
     }
 
-    override fun displayCreatorList(list: List<ActorVO>) {
-       mActorForDetailPageAdatpter.setNewsData(list)
-        rcCreatorList.adapter = mActorForDetailPageAdatpter
+    override fun displayCreatorList(list: List<CrewVO>) {
+      // mCrewAdapter.setNewsData(list)
+       // rcCreatorList.adapter = mActorForDetailPageAdatpter
     }
 
     override fun displayMovieDetail(moviedetail: MovieDetailsVO) {
@@ -113,6 +116,17 @@ class MovieDetail : AppCompatActivity(),  MovieDetailView{
 
 
     }
+
+    override fun displayCastCrewList(list: CastCrewVO) {
+        mCrewAdapter.setNewsData(list.crew)
+        rcCreatorList.adapter = mCrewAdapter
+
+
+        mcastAdapter.setNewsData(list.cast)
+        rcActorListForDetailPage.adapter = mcastAdapter
+
+    }
+
     private fun bindDetailData(moviedetail : MovieDetailsVO){
         var imgurl = image_url + moviedetail.poster_path
         Glide

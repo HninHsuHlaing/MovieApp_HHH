@@ -1,10 +1,8 @@
 package com.padcx.movieapp_hhh.viewHolders
 
 import android.view.View
-import com.padcx.movieapp_hhh.data.vos.ActorVO
-import com.padcx.movieapp_hhh.data.vos.DiscoverVO
-import com.padcx.movieapp_hhh.data.vos.ResultVO
-import com.padcx.movieapp_hhh.data.vos.ShowCaseVO
+import com.padcx.movieapp_hhh.data.vos.*
+
 //import com.padcx.movieapp_hhh.delegate.ActorDelegate
 
 class CreatorViewHolder(itemView : View) :AbstractCreatorViewHolder(itemView) {
@@ -21,6 +19,14 @@ class CreatorViewHolder(itemView : View) :AbstractCreatorViewHolder(itemView) {
     }
 
     override fun bindDiscoverData(data: DiscoverVO) {
+
+    }
+
+    override fun bindCastData(data: CastVO) {
+
+    }
+
+    override fun bindCreatorData(data: CrewVO) {
 
     }
 }

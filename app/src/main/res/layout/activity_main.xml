@@ -75,6 +75,26 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/lyappBar"
                 >
+<!--                <androidx.viewpager.widget.ViewPager-->
+<!--                    android:id="@+id/slider_pager"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="175dp"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintHorizontal_bias="0.0"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--                <com.google.android.material.tabs.TabLayout-->
+<!--                    android:id="@+id/indicator"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/slider_pager"-->
+<!--                    app:tabBackground="@drawable/indicator_selector"-->
+<!--                    app:tabGravity="center"-->
+<!--                    app:tabIndicatorHeight="0dp"-->
+<!--                    android:layout_below="@+id/slider_pager"/>-->
 
                 <ViewFlipper
                     android:id="@+id/viewflipper"
@@ -106,6 +126,7 @@
 
 
                     <ImageView
+                        android:id="@+id/imgPlayTester"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:src="@drawable/movietester2"
@@ -118,6 +139,7 @@
 
 
                     <ImageView
+                        android:id="@+id/imgPlayTester1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:src="@drawable/movietester8"

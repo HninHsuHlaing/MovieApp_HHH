@@ -16,4 +16,6 @@ abstract class BaseViewHolder(itemView : View) : RecyclerView.ViewHolder(itemVie
     abstract fun bindActorData(data : ActorVO)
     abstract fun bindShowCaseData(data : ShowCaseVO)
     abstract fun bindDiscoverData(data : DiscoverVO)
+    abstract fun bindCastData(data : CastVO)
+    abstract  fun bindCreatorData(data :CrewVO)
 }

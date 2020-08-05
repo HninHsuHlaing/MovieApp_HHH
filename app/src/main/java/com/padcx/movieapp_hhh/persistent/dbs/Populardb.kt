@@ -4,11 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.padcx.movieapp_hhh.data.vos.CastCrewVO
 import com.padcx.movieapp_hhh.data.vos.MovieDetailsVO
 import com.padcx.movieapp_hhh.data.vos.ResultVO
 import com.padcx.movieapp_hhh.persistent.daos.PopularMovieDaos
 
-@Database(entities = [ResultVO::class, MovieDetailsVO::class], version = 4,exportSchema = false)
+@Database(entities = [ResultVO::class, MovieDetailsVO::class, CastCrewVO::class], version = 6,exportSchema = false)
 abstract class Populardb : RoomDatabase() {
     companion object{
         val Tour_DB= "PopularMovie_DB"
