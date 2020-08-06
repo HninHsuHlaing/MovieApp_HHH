@@ -10,16 +10,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import com.padcx.movieapp_hhh.R
-import com.padcx.movieapp_hhh.adapters.ActorAdapter
-import com.padcx.movieapp_hhh.adapters.DynamicPagerAdapter
-import com.padcx.movieapp_hhh.adapters.PopularfilmAdapter
-import com.padcx.movieapp_hhh.adapters.ShowCaseAdapter
+import com.padcx.movieapp_hhh.adapters.*
 import com.padcx.movieapp_hhh.data.models.MovieModel
 import com.padcx.movieapp_hhh.data.models.MovieModelImpl
-import com.padcx.movieapp_hhh.data.vos.ActorVO
-import com.padcx.movieapp_hhh.data.vos.GenerVO
-import com.padcx.movieapp_hhh.data.vos.ResultVO
-import com.padcx.movieapp_hhh.data.vos.ShowCaseVO
+import com.padcx.movieapp_hhh.data.vos.*
 import com.padcx.movieapp_hhh.mvp.presenter.MainPresenter
 import com.padcx.movieapp_hhh.mvp.presenter.MainPresenterImpl
 import com.padcx.movieapp_hhh.mvp.view.MainView
@@ -47,18 +41,18 @@ class MainActivity : AppCompatActivity(),MainView {
         mPresenter = MainPresenterImpl()
            // viewflipper = findViewById(R.id.viewflipper)
 
-        viewflipper.flipInterval = 3000
-        viewflipper.isAutoStart = true
-
-        btnPlayTester.setOnClickListener {
-            startActivity(PlayVideoActivity.newInstant(this))
-        }
-        imgPlayTester.setOnClickListener {
-            startActivity(PlayVideoActivity.newInstant(this))
-        }
-        imgPlayTester1.setOnClickListener {
-            startActivity(PlayVideoActivity.newInstant(this))
-        }
+//        viewflipper.flipInterval = 3000
+//        viewflipper.isAutoStart = true
+//
+//        btnPlayTester.setOnClickListener {
+//            startActivity(PlayVideoActivity.newInstant(this))
+//        }
+//        imgPlayTester.setOnClickListener {
+//            startActivity(PlayVideoActivity.newInstant(this))
+//        }
+//        imgPlayTester1.setOnClickListener {
+//            startActivity(PlayVideoActivity.newInstant(this))
+//        }
 //        btnSchowCasePlay.setOnClickListener {
 //            startActivity(PlayVideoActivity.newInstant((this)))
 //        }
@@ -70,9 +64,9 @@ class MainActivity : AppCompatActivity(),MainView {
         mPresenter.onShowCaseUIReady(this)
         mPresenter.onShowGenerUIReady(this)
 
-        btnPlayTester.setOnClickListener {
-            startActivity(PlayVideoActivity.newInstant(this))
-        }
+//        btnPlayTester.setOnClickListener {
+//            startActivity(PlayVideoActivity.newInstant(this))
+//        }
 
         setUpRecycler()
 //        igLocation.setOnClickListener {
@@ -147,5 +141,10 @@ class MainActivity : AppCompatActivity(),MainView {
         mDynamicPagerAdapter = DynamicPagerAdapter(supportFragmentManager,list)
         pager.adapter = mDynamicPagerAdapter
         tabs.setupWithViewPager(pager)
+    }
+
+    override fun displayTopRateMovieList(list: List<TopRateMovieVO>) {
+        slider_pager.adapter= SliderPagerAdapter(applicationContext,list)
+        indicator.setupWithViewPager(slider_pager,true);
     }
 }

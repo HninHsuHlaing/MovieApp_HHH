@@ -192,6 +192,27 @@ object MovieModelImpl : BaseModel(),MovieModel{
             })
     }
 
+    override fun getAllTopRatedMovieList(onError: (String) -> Unit): LiveData<List<TopRateMovieVO>> {
+        return mPopularMovieDB.PopularMovieDaos()
+            .getAllTopRatedMovies()
+    }
+
+    @SuppressLint("CheckResult")
+    override fun getAllTopRatedMovieListFromApiAndSaveToDatabase(
+        onSuccess: () -> Unit,
+        onError: (String) -> Unit
+    ) {
+        mMovieApi.getTopRatedMovies(PARAM_API_KEY)
+            .map { it.results?.toList() ?: listOf() }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe ({
+                mPopularMovieDB.PopularMovieDaos().insertAllTopRatedMovieData(it)
+            },{
+             //   onError(it.localizedMessage ?: EM_NO_INTERNET_CONNECTION)
+            })
+    }
+
     override fun getAllDiscoverList(
         genericname: String,
         onError: (String) -> Unit

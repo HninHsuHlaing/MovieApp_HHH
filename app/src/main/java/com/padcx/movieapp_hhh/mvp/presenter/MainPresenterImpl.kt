@@ -18,6 +18,13 @@ class MainPresenterImpl : AbstractBasePresenter<MainView>(), MainPresenter {
         }).observe(lifeCycleOwner, Observer {
             mView?.displayPopularMovieList(it)
         })
+
+        mMovieModel.getAllTopRatedMovieListFromApiAndSaveToDatabase(onSuccess = {
+        },onError = {})
+        mMovieModel.getAllTopRatedMovieList (onError = {})
+            .observe(lifeCycleOwner, Observer {
+                mView?.displayTopRateMovieList(it)
+            })
     }
 
     override fun onActorUiReady(lifeCycleOwner: LifecycleOwner) {

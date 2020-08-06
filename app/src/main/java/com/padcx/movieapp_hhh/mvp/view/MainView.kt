@@ -1,9 +1,6 @@
 package com.padcx.movieapp_hhh.mvp.view
 
-import com.padcx.movieapp_hhh.data.vos.ActorVO
-import com.padcx.movieapp_hhh.data.vos.GenerVO
-import com.padcx.movieapp_hhh.data.vos.ResultVO
-import com.padcx.movieapp_hhh.data.vos.ShowCaseVO
+import com.padcx.movieapp_hhh.data.vos.*
 
 interface MainView  : BaseView{
     fun displayPopularMovieList(list: List<ResultVO>)
@@ -13,4 +10,6 @@ interface MainView  : BaseView{
     fun navigateToactorDetail(movie_id : Int)
 
     fun showGenerList(list: List<GenerVO>)
+
+    fun displayTopRateMovieList(list: List<TopRateMovieVO>)
 }

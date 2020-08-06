@@ -7,9 +7,10 @@ import androidx.room.RoomDatabase
 import com.padcx.movieapp_hhh.data.vos.CastCrewVO
 import com.padcx.movieapp_hhh.data.vos.MovieDetailsVO
 import com.padcx.movieapp_hhh.data.vos.ResultVO
+import com.padcx.movieapp_hhh.data.vos.TopRateMovieVO
 import com.padcx.movieapp_hhh.persistent.daos.PopularMovieDaos
 
-@Database(entities = [ResultVO::class, MovieDetailsVO::class, CastCrewVO::class], version = 6,exportSchema = false)
+@Database(entities = [ResultVO::class, MovieDetailsVO::class, CastCrewVO::class, TopRateMovieVO::class], version = 7,exportSchema = false)
 abstract class Populardb : RoomDatabase() {
     companion object{
         val Tour_DB= "PopularMovie_DB"

@@ -107,12 +107,12 @@ class MovieDetail : AppCompatActivity(),  MovieDetailView{
         movietitle?.text = moviedetail.original_title
         overview?.text = moviedetail.overview
         tvoriginalTitle.text = moviedetail.original_title
-        tvType.text = moviedetail.status
-        tvProduction.text = moviedetail.original_language
+        tvType.text ="Advanture"
+        tvProduction.text = moviedetail.tagline
         tvVoteCount.text = moviedetail.vote_count.toString()
-       // tv9_25.text = moviedetail.popularity.toString()
-//        tvPremire.text = moviedetail.release_date
-//        tvDescription.text = moviedetail.overview
+        tvDescription.text = moviedetail.overview
+        tvPremire.text = moviedetail.release_date
+
 
 
     }

@@ -1,7 +1,9 @@
 package com.padcx.movieapp_hhh
 
+import androidx.lifecycle.LiveData
 import com.padcx.movieapp_hhh.data.vos.CastCrewVO
 import com.padcx.movieapp_hhh.data.vos.MovieDetailsVO
+import com.padcx.movieapp_hhh.data.vos.TopRateMovieVO
 import com.padcx.movieapp_hhh.network.responses.*
 import com.padcx.movieapp_hhh.util.*
 import io.reactivex.Observable
@@ -44,4 +46,9 @@ interface MovieApi {
         @Path("movie_id") movie_id: Int,
         @Query("api_key") apiKey: String
     ): Observable<GetVideoResponse>
+
+    @GET("movie/top_rated")
+    fun getTopRatedMovies(
+        @Query("api_key") apiKey: String
+    ): Observable<TopRateMovieResponse>
 }

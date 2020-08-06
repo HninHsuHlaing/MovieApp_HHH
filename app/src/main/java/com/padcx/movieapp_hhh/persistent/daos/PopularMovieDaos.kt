@@ -8,6 +8,7 @@ import androidx.room.Query
 import com.padcx.movieapp_hhh.data.vos.CastCrewVO
 import com.padcx.movieapp_hhh.data.vos.MovieDetailsVO
 import com.padcx.movieapp_hhh.data.vos.ResultVO
+import com.padcx.movieapp_hhh.data.vos.TopRateMovieVO
 
 @Dao
 interface PopularMovieDaos {
@@ -28,4 +29,12 @@ interface PopularMovieDaos {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertCastCrewData(generic: CastCrewVO) :Long
+
+    @Query("select * from topratedmovies")
+    fun getAllTopRatedMovies(): LiveData<List<TopRateMovieVO>>
+
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAllTopRatedMovieData(toprates: List<TopRateMovieVO?>)
+
 }
