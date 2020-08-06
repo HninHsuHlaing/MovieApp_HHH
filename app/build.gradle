@@ -86,6 +86,9 @@ dependencies {
     annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
     implementation 'com.revenuecat.purchases:purchases:2.3.1'
 
+//    compile files('libs/YouTubeAndroidPlayerApi.jar')
+//    compile 'com.google.apis:google-api-services-youtube:v3-rev181-1.22.0'
+
 //    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
 //    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:chromecast-sender:0.23'
   //  implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'

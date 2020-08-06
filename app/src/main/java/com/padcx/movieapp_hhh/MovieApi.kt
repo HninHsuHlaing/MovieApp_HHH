@@ -51,4 +51,5 @@ interface MovieApi {
     fun getTopRatedMovies(
         @Query("api_key") apiKey: String
     ): Observable<TopRateMovieResponse>
+
 }

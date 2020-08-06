@@ -17,7 +17,8 @@ class VideoPresenterImpl : VideoPresenter, AbstractBasePresenter<VideosView>() {
         mMovieImpl.getVideoIdByMovieId(
             movie_id,
             onSuccess = {
-                mView?.displayVideo(videoId = it.get(0).key)
+                //mView?.displayVideo(videoId = it.get(0).key)
+                 it.get(0).key
             },
             onError = {}
         )

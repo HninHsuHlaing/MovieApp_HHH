@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.widget.ViewFlipper
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.view.menu.MenuView
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
@@ -68,7 +69,10 @@ class MainActivity : AppCompatActivity(),MainView {
 //            startActivity(PlayVideoActivity.newInstant(this))
 //        }
 
+
         setUpRecycler()
+
+
 //        igLocation.setOnClickListener {
 //            startActivity(MovieDetail.newIntent(this))
 //        }
@@ -131,10 +135,14 @@ class MainActivity : AppCompatActivity(),MainView {
         rcActorList.adapter = mActorAdapter
     }
 
+    override fun navigatetodetailView(mvoid_id: Int) {
+       // startActivity(PlayVideoActivity.newInstant(this,mvoid_id))
+    }
 
 
     override fun navigateToactorDetail(movie_id : Int) {
-            startActivity(MovieDetail.newIntent(this,movie_id))
+          //  startActivity(MovieDetail.newIntent(this,movie_id))
+        startActivity(PlayVideoActivity.newInstant(this,movie_id))
     }
 
     override fun showGenerList(list: List<GenerVO>) {
