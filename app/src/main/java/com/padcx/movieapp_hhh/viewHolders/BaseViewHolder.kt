@@ -3,8 +3,9 @@ package com.padcx.movieapp_hhh.viewHolders
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.padcx.movieapp_hhh.data.vos.*
+import com.padcx.shared.SharedBaseViewHolder
 
-abstract class BaseViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
+abstract class BaseViewHolder(itemView : View) : SharedBaseViewHolder(itemView) {
 
     var mdata : ResultVO? = null
     var mMovieData : MovieDetailsVO? = null

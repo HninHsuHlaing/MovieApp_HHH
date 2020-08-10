@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
+import com.padcx.movieapp_hhh.BuildConfig
 import com.padcx.movieapp_hhh.MovieApi
 import com.padcx.movieapp_hhh.data.vos.*
 import com.padcx.movieapp_hhh.network.responses.GetDiscoverResponse
@@ -14,24 +15,10 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 object MovieModelImpl : BaseModel(),MovieModel{
-//    override fun getPopularMovies(
-//        onSuccess: (List<ResultVO>) -> Unit,
-//        onFailure: (String) -> Unit
-//    ) {
-//
-//        var resultlist = mMovieApi.getPopularMoveList(PARAM_API_KEY)
-//            .map { it.result }
-//            .subscribeOn(Schedulers.io())
-//            .observeOn(AndroidSchedulers.mainThread())
-//            .subscribe({
-//               Log.d("tag",it.toString())
-//            })
-//
-//    }
-
+var API_KEY = BuildConfig.PARAM_API_KEY.toString()
   @SuppressLint("CheckResult")
   private   fun getAllPopularMovieFromApi_andSaveToDB(){
-            mMovieApi.getPopularMoveList(PARAM_API_KEY)
+            mMovieApi.getPopularMoveList(API_KEY)
                 .map {
                     it.result
                 }

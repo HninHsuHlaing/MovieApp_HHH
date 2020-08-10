@@ -4,55 +4,102 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'me.moallemi.advanced-build-version'
 
+advancedVersioning {
+    nameOptions {
+        versionMajor 1
+        versionMinor 0
+        versionPatch 0
+    }
+    codeOptions {
+        versionCodeType 'AUTO_INCREMENT_ONE_STEP'
+    }
+    outputOptions {
+        renameOutput true
+        nameFormat 'MovieApp-v${versionName}'
+    }
+}
+
+def appVersionName = advancedVersioning.versionName
+def appVersionCode = advancedVersioning.versionCode
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.padcx.movieapp_hhh"
-        minSdkVersion 15
+        minSdkVersion 23
         targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        versionCode appVersionCode
+        versionName appVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         compileOptions {
             sourceCompatibility 1.8
             targetCompatibility 1.8
         }
+
+
+        //////For Api Key//////
+        buildConfigField 'String','PARAM_API_KEY',"\"${verySensitiveData}\""
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            //resourceShrinking true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors{
+        def BASE_URL = "BASE_URL_FIELD"
+        def BASE_DEV_URL = "\"https://dev.padcmyanmar.com\""
+        def BASE_PROD_URL ="\"https://prod.padcmyanmar.com\""
+        def BASE_STAGY_URL = "\"https://stagy.padcmyanmar.com\""
+        flavorDimensions "appModule"
+        dev{
+            dimension "appModule"
+            applicationIdSuffix = ".dev"
+            manifestPlaceholders = [appName :"@string/dev_name"]
+            buildConfigField 'String',BASE_URL,BASE_DEV_URL
+        }
+        prod{
+            dimension "appModule"
+            applicationIdSuffix = ".prod"
+            manifestPlaceholders = [appName :"@string/prod_name"]
+            buildConfigField 'String',BASE_URL,BASE_PROD_URL
+        }
+        stagy{
+            dimension "appModule"
+            applicationIdSuffix = ".stagy"
+            manifestPlaceholders = [appName :"@string/stagy_name"]
+            buildConfigField 'String',BASE_URL,BASE_STAGY_URL
+        }
+    }
+    
 }
 
 dependencies {
+    implementation project (":shared")
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.3.1'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
+   // implementation 'androidx.appcompat:appcompat:1.1.0'
+   // implementation 'androidx.core:core-ktx:1.3.1'
+   // implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+ //   testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    //////for coordinator layout/////
-    implementation "androidx.coordinatorlayout:coordinatorlayout:1.1.0"
+    implementation rootProject.ext.libraries.glide
+    implementation rootProject.ext.libraries.constraintLayout
+    implementation rootProject.ext.libraries.appCompact
+    implementation rootProject.ext.libraries.androidCore
+    testImplementation rootProject.ext.libraries.androidJUnit
+    implementation rootProject.ext.libraries.coordinatorLayout
+    implementation rootProject.ext.libraries.recyclerView
+    implementation rootProject.ext.libraries.cardView
+    implementation rootProject.ext.libraries.materialCardView
+    implementation rootProject.ext.libraries.json
 
-    ////for RecyclerView ///
-    implementation "androidx.recyclerview:recyclerview:1.2.0-alpha05"
-
-    /////Card View///
-    implementation "androidx.cardview:cardview:1.0.0"
-
-    ////For Material////
-    implementation 'com.google.android.material:material:1.0.0'
-
-    //GSON
-    implementation 'com.google.code.gson:gson:2.8.6'
 
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.6.1'
@@ -64,7 +111,7 @@ dependencies {
     // LiveData
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
 
-    implementation 'com.github.bumptech.glide:glide:4.11.0'
+   // implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 
     // lifecycle components
@@ -122,6 +169,28 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
     androidTestImplementation 'androidx.test:runner:1.1.0'
     androidTestImplementation 'androidx.test:rules:1.1.0'
+
+
+
+
+    /////////For Glide Project/////
+
+   // implementation rootProject.ext.glide
+
+    //////for coordinator layout/////
+    //  implementation "androidx.coordinatorlayout:coordinatorlayout:1.1.0"
+
+    ////for RecyclerView ///
+    //implementation "androidx.recyclerview:recyclerview:1.2.0-alpha05"
+
+    /////Card View///
+    // implementation "androidx.cardview:cardview:1.0.0"
+
+    ////For Material////
+    // implementation 'com.google.android.material:material:1.0.0'
+
+    //GSON
+    // implementation 'com.google.code.gson:gson:2.8.6'
 
 
 }

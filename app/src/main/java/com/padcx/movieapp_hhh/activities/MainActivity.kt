@@ -18,10 +18,11 @@ import com.padcx.movieapp_hhh.data.vos.*
 import com.padcx.movieapp_hhh.mvp.presenter.MainPresenter
 import com.padcx.movieapp_hhh.mvp.presenter.MainPresenterImpl
 import com.padcx.movieapp_hhh.mvp.view.MainView
+import com.padcx.shared.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity(),MainView {
+class MainActivity : BaseActivity(),MainView {
 
 
     private val mMovieModel : MovieModel = MovieModelImpl
@@ -141,8 +142,8 @@ class MainActivity : AppCompatActivity(),MainView {
 
 
     override fun navigateToactorDetail(movie_id : Int) {
-          //  startActivity(MovieDetail.newIntent(this,movie_id))
-        startActivity(PlayVideoActivity.newInstant(this,movie_id))
+            startActivity(MovieDetail.newIntent(this,movie_id))
+     //   startActivity(PlayVideoActivity.newInstant(this,movie_id))
     }
 
     override fun showGenerList(list: List<GenerVO>) {

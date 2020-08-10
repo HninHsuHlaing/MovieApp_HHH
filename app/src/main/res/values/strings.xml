@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">MovieApp_HHH</string>
+    <string name="dev_name">MovieApp(dev)</string>
+    <string name="prod_name">MovieApp</string>
+    <string name="stagy_name">MovieApp(Stagy)</string>
 
     <string name="hyperlink">SEE MORE\n<a href="https://google.com">Google.com</a></string>
     <string name="storyline">Seventy years before Harry Potter reading a book \nby Newt Scamander, author experiencing \nextraordinary adventures in the mysterious, the New \nYork Association of witches.</string>
